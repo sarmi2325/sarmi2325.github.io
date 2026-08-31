@@ -230,6 +230,9 @@
   .pub { padding: .8rem 0; border-top: 1px dashed var(--line); }
   .pub:first-of-type { border-top: none; padding-top: 0; }
   .pub .t { font-weight: 500; font-size: .93rem; line-height: 1.35; }
+  .pub .t a { color: var(--ink); text-decoration: none; transition: color .2s; }
+  .pub .t a:hover { color: var(--accent); }
+  .pub .t a .ext { color: var(--accent); font-size: .8em; opacity: .8; }
   .pub .v { font-family: "Space Mono", monospace; font-size: .69rem; color: var(--muted); margin-top: .3rem; }
   .cert { display: flex; gap: .7rem; font-size: .92rem; align-items: baseline; padding: .35rem 0; }
   .cert .src { font-family: "Space Mono", monospace; font-size: .67rem; color: var(--accent); min-width: 5rem; }
@@ -469,9 +472,9 @@
         <div>
           <div class="side reveal">
             <h3>IEEE Publications</h3>
-            <div class="pub"><div class="t">Monitoring of a Prosthetic Leg During Rehabilitation Using IoT</div><div class="v">ICAISS-2023 · Scopus · IEEE</div></div>
-            <div class="pub"><div class="t">Determining Water Toxicity After an Oil Spill using UAVs</div><div class="v">ICCES-2024 · IEEE</div></div>
-            <div class="pub"><div class="t">PI, Fractional-PI &amp; ILC-PI Controllers for Conical-Tank Level Regulation</div><div class="v">AECTSD-2025 · IEEE</div></div>
+            <div class="pub"><div class="t"><a href="https://ieeexplore.ieee.org/document/10250532" target="_blank" rel="noopener noreferrer">Monitoring of a Prosthetic Leg During Rehabilitation Using IoT <span class="ext" aria-hidden="true">↗</span></a></div><div class="v">ICAISS-2023 · Scopus · IEEE</div></div>
+            <div class="pub"><div class="t"><a href="https://ieeexplore.ieee.org/document/10859330" target="_blank" rel="noopener noreferrer">Determining Water Toxicity After an Oil Spill using UAVs <span class="ext" aria-hidden="true">↗</span></a></div><div class="v">ICCES-2024 · IEEE</div></div>
+            <div class="pub"><div class="t"><a href="https://ieeexplore.ieee.org/document/11411462" target="_blank" rel="noopener noreferrer">PI, Fractional-PI &amp; ILC-PI Controllers for Conical-Tank Level Regulation <span class="ext" aria-hidden="true">↗</span></a></div><div class="v">AECTSD-2025 · IEEE</div></div>
           </div>
           <div class="side reveal">
             <h3>Certifications</h3>
