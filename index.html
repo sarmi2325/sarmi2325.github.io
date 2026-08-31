@@ -135,18 +135,17 @@
   .lgroup.reveal:nth-child(4){ transition-delay: .18s; }
 
   /* ===================== ABOUT ===================== */
-  .about-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(2rem,5vw,4.5rem); align-items: start; }
+  .about-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(2rem,5vw,4.5rem); align-items: center; }
   @media (max-width: 820px){ .about-grid { grid-template-columns: 1fr; gap: 2.2rem; } }
   .about-photo { position: relative; }
   .ph-img { width: 100%; aspect-ratio: 864 / 1210; max-height: 560px; border-radius: 16px; border: 1px solid var(--line); background-image: var(--about-photo); background-size: cover; background-position: center top; filter: grayscale(1) contrast(1.03); transition: filter .55s ease; }
   .about-photo:hover .ph-img { filter: grayscale(0); }
-  .about-main .facts { margin-top: 2rem; }
+  .about-main .focus { margin-top: 2.2rem; }
   .about-copy p { color: var(--ink-soft); margin-top: 1.2rem; max-width: 50ch; }
   .about-copy p:first-of-type { font-size: 1.2rem; color: var(--ink); margin-top: 1.4rem; }
-  .facts { border-top: 1px solid var(--line); }
-  .fact { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: .95rem 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
-  .fact .k { font-family: "Space Mono", monospace; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: .12rem; }
-  .fact .v { color: var(--ink); }
+  .focus { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+  .focus-label { font-family: "Space Mono", monospace; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .focus-val { margin-top: .55rem; font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 1.18rem; letter-spacing: -.01em; color: var(--ink); line-height: 1.4; }
 
   /* ===================== WORK ===================== */
   .works { border-top: 1px solid var(--line); }
@@ -301,8 +300,9 @@
           <p>I work across the full applied-AI stack, from models and prompts to the backend services that run them in production. I'm drawn to problems where the small details decide whether a system can be trusted.</p>
           <p>Away from the screen, I've sketched and painted since childhood, which keeps me observant and patient with the fine details.</p>
         </div>
-        <div class="facts">
-          <div class="fact"><span class="k">Focus</span><span class="v">Applied AI · LLM systems · backend engineering</span></div>
+        <div class="focus">
+          <span class="focus-label">Focus</span>
+          <p class="focus-val">Applied AI · LLM systems · backend engineering</p>
         </div>
         </div>
       </div>
