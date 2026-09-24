@@ -81,6 +81,9 @@
   body.loaded .headline .line:nth-child(1) > span { transition-delay: .15s; transform: none; }
   body.loaded .headline .line:nth-child(2) > span { transition-delay: .28s; transform: none; }
   .headline em { font-style: normal; color: var(--accent); }
+  .hero-sub { margin-top: 1.6rem; max-width: 42ch; color: var(--ink-soft); font-size: 1.06rem; line-height: 1.5;
+    opacity: 0; transform: translateY(14px); transition: opacity .9s ease .5s, transform .9s cubic-bezier(.19,1,.22,1) .5s; }
+  body.loaded .hero-sub { opacity: 1; transform: none; }
 
   .h-fade { opacity: 0; transform: translateY(16px); transition: opacity .9s ease, transform .9s cubic-bezier(.19,1,.22,1); }
   body.loaded .h-fade { opacity: 1; transform: none; }
@@ -253,7 +256,7 @@
   .foot-in { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; font-family: "Space Mono", monospace; font-size: .74rem; color: var(--muted); }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .h-fade, .headline .line > span, .logo { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .reveal, .h-fade, .hero-sub, .headline .line > span, .logo { opacity: 1 !important; transform: none !important; transition: none !important; }
     .pulse { animation: none !important; }
   }
 </style>
@@ -276,9 +279,10 @@
   <section class="hero" id="hero">
     <div class="wrap">
       <h1 class="headline">
-        <span class="line"><span>I design AI that reads,</span></span>
-        <span class="line"><span>reasons &amp; <em>runs in production.</em></span></span>
+        <span class="line"><span>I focus on what happens</span></span>
+        <span class="line"><span>when ideas meet <em>reality.</em></span></span>
       </h1>
+      <p class="hero-sub">Building intelligent systems for problems worth solving.</p>
       <div class="cta-row h-fade">
         <a href="#work" class="btn btn-primary">See the work <span class="arw" aria-hidden="true">↓</span></a>
       </div>
