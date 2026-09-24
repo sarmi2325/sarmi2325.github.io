@@ -80,9 +80,10 @@
   .headline .line > span { display: block; transform: translateY(112%); transition: transform 1s cubic-bezier(.19,1,.22,1); }
   body.loaded .headline .line:nth-child(1) > span { transition-delay: .15s; transform: none; }
   body.loaded .headline .line:nth-child(2) > span { transition-delay: .28s; transform: none; }
+  body.loaded .headline .line:nth-child(3) > span { transition-delay: .41s; transform: none; }
   .headline em { font-style: normal; color: var(--accent); }
   .hero-sub { margin-top: 1.6rem; max-width: none; white-space: nowrap; color: var(--ink-soft); font-size: 1.06rem; line-height: 1.5;
-    opacity: 0; transform: translateY(14px); transition: opacity .9s ease .5s, transform .9s cubic-bezier(.19,1,.22,1) .5s; }
+    opacity: 0; transform: translateY(14px); transition: opacity .9s ease .65s, transform .9s cubic-bezier(.19,1,.22,1) .65s; }
   body.loaded .hero-sub { opacity: 1; transform: none; }
   @media (max-width: 620px){ .hero-sub { white-space: normal; } }
 
@@ -281,7 +282,8 @@
     <div class="wrap">
       <h1 class="headline">
         <span class="line"><span>I explore what happens</span></span>
-        <span class="line"><span>when ideas meet <em>reality.</em></span></span>
+        <span class="line"><span>when ideas meet</span></span>
+        <span class="line"><span><em>reality.</em></span></span>
       </h1>
       <p class="hero-sub">Building intelligent systems for problems worth solving.</p>
       <div class="cta-row h-fade">
