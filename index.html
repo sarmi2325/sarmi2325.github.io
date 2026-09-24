@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#E24E27">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@600;700&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
 
 <style>
   /* ===================== TOKENS (light-first, professional) ===================== */
@@ -81,6 +81,16 @@
   body.loaded .headline .line:nth-child(1) > span { transition-delay: .15s; transform: none; }
   body.loaded .headline .line:nth-child(2) > span { transition-delay: .28s; transform: none; }
   .headline em { font-style: normal; color: var(--accent); }
+
+  .hero-sign { margin-bottom: 1.7rem; }
+  .hero-sign .sign { display: block; font-family: "Caveat", cursive; font-weight: 700; color: var(--accent);
+    font-size: clamp(2.4rem, 5.5vw, 3.7rem); line-height: .85; letter-spacing: .01em; clip-path: inset(0 100% 0 0); }
+  body.loaded .hero-sign .sign { animation: sign-write 1.25s .2s cubic-bezier(.7,0,.3,1) forwards; }
+  @keyframes sign-write { to { clip-path: inset(0 0 0 0); } }
+  .hero-sign .sign-role { display: block; margin-top: .55rem; font-family: "Space Mono", monospace;
+    font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); opacity: 0; }
+  body.loaded .hero-sign .sign-role { animation: sign-role .8s 1s ease forwards; }
+  @keyframes sign-role { to { opacity: 1; } }
 
   .h-fade { opacity: 0; transform: translateY(16px); transition: opacity .9s ease, transform .9s cubic-bezier(.19,1,.22,1); }
   body.loaded .h-fade { opacity: 1; transform: none; }
@@ -255,6 +265,8 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal, .h-fade, .headline .line > span, .logo { opacity: 1 !important; transform: none !important; transition: none !important; }
     .pulse { animation: none !important; }
+    .hero-sign .sign { clip-path: none !important; animation: none !important; }
+    .hero-sign .sign-role { opacity: 1 !important; animation: none !important; }
   }
 </style>
 </head>
@@ -275,6 +287,10 @@
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
     <div class="wrap">
+      <div class="hero-sign">
+        <span class="sign">Sarmitha</span>
+        <span class="sign-role">AI Engineer</span>
+      </div>
       <h1 class="headline">
         <span class="line"><span>I design AI that reads,</span></span>
         <span class="line"><span>reasons &amp; <em>runs in production.</em></span></span>
