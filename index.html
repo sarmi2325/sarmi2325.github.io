@@ -172,6 +172,60 @@
   .work .go { font-family: "Space Mono", monospace; font-size: .8rem; color: var(--accent); display: inline-flex; align-items: center; gap: .4rem; opacity: 0; transform: translateX(-8px); transition: opacity .35s, transform .35s; white-space: nowrap; }
   .work:hover .go { opacity: 1; transform: none; }
   @media (max-width: 720px){ .work { grid-template-columns: 2.6rem 1fr; } .work .go { display: none; } }
+  .work.case-trigger { cursor: pointer; }
+  .work.case-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 10px; }
+  @media (max-width: 720px){ .work.case-trigger .go { display: inline-flex; grid-column: 2; margin-top: .6rem; opacity: 1; transform: none; } }
+
+  /* ===================== CASE STUDY MODAL ===================== */
+  body.modal-open { overflow: hidden; }
+  .case-overlay { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: flex-start; justify-content: center; padding: max(4vh, 1.2rem) 1rem; }
+  .case-overlay[hidden] { display: none; }
+  .case-scrim { position: absolute; inset: 0; background: rgba(23,21,14,.55); backdrop-filter: blur(4px); opacity: 0; transition: opacity .4s ease; }
+  .case-overlay.show .case-scrim { opacity: 1; }
+  .case-panel { position: relative; z-index: 1; width: min(920px, 100%); max-height: 92vh; overflow-y: auto; overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 20px;
+    box-shadow: 0 40px 120px rgba(23,21,14,.4); transform: translateY(26px) scale(.985); opacity: 0;
+    transition: transform .55s cubic-bezier(.19,1,.22,1), opacity .4s ease; }
+  .case-overlay.show .case-panel { transform: none; opacity: 1; }
+  .case-topbar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: .85rem clamp(1.1rem, 4vw, 2.4rem); background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px) saturate(1.2); border-bottom: 1px solid var(--line); }
+  .case-close { width: 2.3rem; height: 2.3rem; border-radius: 50%; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    font-size: .95rem; cursor: pointer; display: grid; place-items: center; flex: none; transition: background .25s, color .25s, transform .35s, border-color .25s; }
+  .case-close:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: rotate(90deg); }
+
+  .cs-eyebrow { font-family: "Space Mono", monospace; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: .5rem; margin: 0; }
+  .cs-eyebrow::before { content:""; width: 1.4rem; height: 1px; background: var(--accent); }
+  .case-content { padding: 1.5rem clamp(1.1rem, 4vw, 2.4rem) 2.6rem; }
+  .cs-title { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: clamp(1.6rem, 4.5vw, 2.25rem); line-height: 1.08; letter-spacing: -.03em; margin: .5rem 0 .5rem; }
+  .cs-lede { color: var(--ink-soft); font-size: 1.04rem; line-height: 1.55; margin: 0 0 1rem; max-width: 64ch; }
+  .cs-meta { font-family: "Space Mono", monospace; font-size: .72rem; color: var(--muted); letter-spacing: .02em; display: flex; flex-wrap: wrap; gap: .35rem 1rem; }
+  .cs-meta b { color: var(--ink); }
+  .cs-sec { margin-top: 1.9rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+  .cs-sec > h3 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.18rem; letter-spacing: -.02em; margin: 0 0 .55rem; color: var(--ink); }
+  .cs-sec p { color: var(--ink); font-size: .95rem; line-height: 1.6; margin: .45rem 0; max-width: 66ch; }
+  .cs-list { margin: .45rem 0 0; padding-left: 1.1rem; }
+  .cs-list li { font-size: .93rem; line-height: 1.55; color: var(--ink); margin: .45rem 0; max-width: 66ch; }
+  .cs-list li b { color: var(--accent); font-weight: 600; }
+  .cs-note { font-size: .82rem; color: var(--muted); font-style: italic; margin-top: .8rem; }
+  .cs-stack { display: grid; gap: .8rem; margin-top: .3rem; }
+  .cs-stackrow .lbl { font-family: "Space Mono", monospace; font-size: .64rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .4rem; }
+  .cs-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .cs-chip { font-family: "Space Mono", monospace; font-size: .72rem; padding: .3rem .65rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink-soft); }
+
+  /* -------- 3D pipeline "spec" visual -------- */
+  .spec3d { perspective: 1200px; padding: .6rem 0 1.2rem; display: flex; justify-content: center; }
+  .spec3d__float { animation: specFloat 7s ease-in-out infinite; transform-style: preserve-3d; }
+  @keyframes specFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  .spec3d__card { position: relative; width: min(430px, 88vw); transform-style: preserve-3d; transform: rotateX(8deg) rotateY(-17deg); transition: transform .3s ease; }
+  .spec3d__card::before { content:""; position: absolute; inset: 0; border-radius: 16px; transform: translateZ(-46px); background: linear-gradient(160deg, var(--accent), var(--accent-2)); opacity: .22; filter: blur(3px); }
+  .spec3d__inner { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 16px 18px; box-shadow: 0 34px 66px rgba(23,21,14,.3); }
+  .spec3d__title { font-family: "Space Mono", monospace; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .spec-step { display: flex; align-items: center; gap: .7rem; padding: .5rem .6rem; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); margin-bottom: .45rem; transform: translateZ(var(--z, 0px)); }
+  .spec-step:last-child { margin-bottom: 0; }
+  .spec-step .n { font-family: "Space Mono", monospace; font-size: .64rem; color: #fff; background: var(--accent); width: 1.35rem; height: 1.35rem; border-radius: 6px; display: grid; place-items: center; flex: none; }
+  .spec-step .t { font-size: .84rem; font-weight: 500; line-height: 1.2; }
+  .spec-step .t b { color: var(--accent); font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { .spec3d__float { animation: none; } }
 
   /* ===================== TIMELINE ===================== */
   .timeline { border-top: 1px solid var(--line); }
@@ -325,8 +379,17 @@
         <p class="sub">Applied AI and full-stack engineering.</p>
       </div>
       <div class="works">
-        <div class="work reveal">
+        <div class="work reveal case-trigger" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="caseModal">
           <span class="no">01</span>
+          <span>
+            <h3>Construction Submittal Compliance AI</h3>
+            <p class="say">An enterprise document-intelligence platform that reads specification PDFs, matches submitted products against requirements with LLM reasoning and vector search, and routes compliance verdicts to human reviewers - replacing a slow manual process. <em>Production work at Techjays.</em></p>
+            <span class="plaque"><span>FastAPI</span><span>· Gemini</span><span>· pgvector</span><span>· Google Cloud</span><span>· 2026</span></span>
+          </span>
+          <span class="go">Case study →</span>
+        </div>
+        <div class="work reveal">
+          <span class="no">02</span>
           <span>
             <h3>TalentSynth - Resume Analyzer</h3>
             <p class="say">A resume analyzer that parses a CV, scores it against a job description on a strict rubric, and surfaces the reasoning - a secure Django app with Google OAuth and a live analytics dashboard.</p>
@@ -334,7 +397,7 @@
           </span>
         </div>
         <div class="work reveal">
-          <span class="no">02</span>
+          <span class="no">03</span>
           <span>
             <h3>Pneumonia Detection from Chest X-rays</h3>
             <p class="say">Deep learning that classifies chest X-rays in real time and generates Grad-CAM explanations for interpretability. <em>96% accuracy, 0.995 AUC</em> via a confidence-weighted ensemble of MobileNetV2 and EfficientNetB0.</p>
@@ -503,6 +566,102 @@
 </main>
 
 
+<!-- ============ CASE STUDY MODAL ============ -->
+<div class="case-overlay" id="caseModal" hidden>
+  <div class="case-scrim" data-close></div>
+  <div class="case-panel" role="dialog" aria-modal="true" aria-labelledby="caseTitle" tabindex="-1">
+    <div class="case-topbar">
+      <span class="cs-eyebrow">Case study · Enterprise AI</span>
+      <button class="case-close" type="button" data-close aria-label="Close case study">✕</button>
+    </div>
+    <div class="case-content">
+      <h2 class="cs-title" id="caseTitle">Construction Submittal Compliance AI</h2>
+      <p class="cs-lede">An AI document-intelligence platform that reads construction specification and product documents, matches submitted products against project requirements, and routes compliance decisions to the right reviewers - replacing a slow, manual review.</p>
+      <div class="cs-meta"><span><b>Role:</b> AI Engineer</span><span><b>Focus:</b> Backend AI pipeline · reliability · evaluation</span><span><b>Industry:</b> Construction / Enterprise AI</span><span><b>Client:</b> Anonymized</span></div>
+
+      <div class="spec3d" aria-hidden="true">
+        <div class="spec3d__float">
+          <div class="spec3d__card">
+            <div class="spec3d__inner">
+              <div class="spec3d__title">Pipeline</div>
+              <div class="spec-step" style="--z:0px"><span class="n">1</span><span class="t">Ingest spec &amp; product <b>PDFs</b></span></div>
+              <div class="spec-step" style="--z:6px"><span class="n">2</span><span class="t"><b>LLM extraction</b> → requirements</span></div>
+              <div class="spec-step" style="--z:12px"><span class="n">3</span><span class="t"><b>Vector retrieval</b> · pgvector</span></div>
+              <div class="spec-step" style="--z:18px"><span class="n">4</span><span class="t"><b>LLM matching</b> · product ↔ spec</span></div>
+              <div class="spec-step" style="--z:24px"><span class="n">5</span><span class="t">Compliance <b>verdict</b></span></div>
+              <div class="spec-step" style="--z:30px"><span class="n">6</span><span class="t">Business-unit <b>routing</b></span></div>
+              <div class="spec-step" style="--z:36px"><span class="n">7</span><span class="t"><b>Human review</b> → package</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-sec">
+        <h3>The problem</h3>
+        <p>On large commercial projects, every product that gets installed must be checked against the project's written specifications before approval. Suppliers submit hundreds to thousands of product data sheets per project, and reviewers confirm each one by hand - slow, inconsistent between reviewers, and a frequent source of rework and schedule risk.</p>
+      </div>
+
+      <div class="cs-sec">
+        <h3>The solution</h3>
+        <p>An event-driven platform that uses an LLM to extract structured requirements from specification PDFs, retrieves the relevant requirements per product with vector similarity search over PostgreSQL embeddings, and reasons about whether each product meets them. Every item gets a verdict - compliant, non-compliant, or needs human review - and is routed by business unit to the reviewer who owns it. Large projects process in the background; approved products compile into a single reviewable package.</p>
+      </div>
+
+      <div class="cs-sec">
+        <h3>What I did</h3>
+        <ul class="cs-list">
+          <li><b>Deterministic extraction.</b> Made spec extraction reproducible so the same document yields the same requirement set on re-run - stabilizing every downstream verdict.</li>
+          <li><b>Distributed-systems correctness.</b> Fixed a class of silent event-ordering bugs where events fired before their database transaction committed, by enforcing commit-before-publish.</li>
+          <li><b>No more stalls.</b> Made the retry/failure cap effective, added completion guarantees so no item silently disappears, and a scheduled reconciler to recover stuck work.</li>
+          <li><b>Routing.</b> Implemented business-unit routing of items to the right reviewer, with notification deduplication.</li>
+          <li><b>Evaluation &amp; triage.</b> Built parity/validation harnesses against known-good historical jobs, and triage tooling that labels each finding as a data-quality issue vs a real code bug.</li>
+        </ul>
+      </div>
+
+      <div class="cs-sec">
+        <h3>Tech stack</h3>
+        <div class="cs-stack">
+          <div class="cs-stackrow"><span class="lbl">AI / LLM</span><div class="cs-chips"><span class="cs-chip">Gemini</span><span class="cs-chip">Prompt engineering</span><span class="cs-chip">LLM-as-judge eval</span></div></div>
+          <div class="cs-stackrow"><span class="lbl">Retrieval</span><div class="cs-chips"><span class="cs-chip">pgvector</span><span class="cs-chip">Embeddings</span><span class="cs-chip">RAG</span></div></div>
+          <div class="cs-stackrow"><span class="lbl">Backend</span><div class="cs-chips"><span class="cs-chip">Python</span><span class="cs-chip">FastAPI</span><span class="cs-chip">async SQLAlchemy</span><span class="cs-chip">Pydantic</span></div></div>
+          <div class="cs-stackrow"><span class="lbl">Cloud &amp; infra</span><div class="cs-chips"><span class="cs-chip">Cloud Run</span><span class="cs-chip">Pub/Sub</span><span class="cs-chip">Cloud Scheduler</span><span class="cs-chip">Managed Postgres</span><span class="cs-chip">Object storage</span><span class="cs-chip">Terraform</span></div></div>
+          <div class="cs-stackrow"><span class="lbl">Testing</span><div class="cs-chips"><span class="cs-chip">pytest</span><span class="cs-chip">Parity harnesses</span><span class="cs-chip">Playwright</span></div></div>
+        </div>
+      </div>
+
+      <div class="cs-sec">
+        <h3>Hardest problems</h3>
+        <ul class="cs-list">
+          <li><b>Non-deterministic extraction undermined trust.</b> Re-running a document could change the requirement set, flipping verdicts. I traced the instability to extraction - not the matcher's judgment - and moved to extract-once-and-reuse.</li>
+          <li><b>A silent ordering bug stranded records.</b> Handlers ran before data was committed, found nothing, and returned success with no retry. I recognized the pattern and enforced commit-before-publish.</li>
+          <li><b>Evaluating with no fixed ground truth.</b> Parity harnesses against known-good jobs, treating a green diff as evidence about today's data only - then widening the validation set.</li>
+          <li><b>Data-quality vs code bugs.</b> Many failures were malformed inputs, not defects. Triage tooling that labels each finding cut wasted debugging.</li>
+        </ul>
+      </div>
+
+      <div class="cs-sec">
+        <h3>Results</h3>
+        <ul class="cs-list">
+          <li>Materially reduced verdict inconsistency on re-runs by removing non-determinism from extraction.</li>
+          <li>Eliminated a class of silent failures where items were stranded with no retry.</li>
+          <li>Removed indefinite pipeline stalls via an effective failure cap and a reconciler.</li>
+          <li>Cut debugging time by separating data-quality issues from genuine code defects.</li>
+          <li>Enabled reliable processing of projects with hundreds to thousands of line items.</li>
+        </ul>
+        <p class="cs-note">Client details anonymized and exact internal metrics omitted for confidentiality.</p>
+      </div>
+
+      <div class="cs-sec">
+        <h3>What I took away</h3>
+        <ul class="cs-list">
+          <li>In production LLM systems, determinism and reproducibility matter as much as raw accuracy.</li>
+          <li>Most "AI bugs" are classic distributed-systems bugs - ordering, retries, idempotency - in an AI costume.</li>
+          <li>Evaluation is never finished: a green parity diff only describes today's data.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
 (function () {
@@ -579,6 +738,7 @@
   }
   if (!reduce && window.Lenis) {
     lenis = new Lenis({ lerp: 0.075, smoothWheel: true, wheelMultiplier: 1, touchMultiplier: 1.6 });
+    window.lenis = lenis;
     lenis.on("scroll", function (e){ applyScroll(e.scroll); });
     document.querySelectorAll("a[href^='#']").forEach(function (a) {
       a.addEventListener("click", function (ev) {
@@ -772,5 +932,67 @@
 })();
 </script>
 
+<script>
+(function(){
+  var modal = document.getElementById("caseModal");
+  if(!modal) return;
+  var panel = modal.querySelector(".case-panel");
+  var scene = modal.querySelector(".spec3d");
+  var card  = modal.querySelector(".spec3d__card");
+  var triggers = document.querySelectorAll(".case-trigger");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var lastFocus = null;
+
+  function focusables(){
+    return Array.prototype.slice.call(panel.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])'))
+      .filter(function(el){ return el.offsetParent !== null; });
+  }
+  function onKey(e){
+    if(e.key === "Escape"){ e.preventDefault(); close(); return; }
+    if(e.key === "Tab"){
+      var f = focusables(); if(!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  }
+  function open(){
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    void modal.offsetWidth;
+    modal.classList.add("show");
+    document.body.classList.add("modal-open");
+    if(window.lenis) window.lenis.stop();
+    panel.scrollTop = 0;
+    panel.focus();
+    document.addEventListener("keydown", onKey);
+  }
+  function close(){
+    modal.classList.remove("show");
+    document.body.classList.remove("modal-open");
+    if(window.lenis) window.lenis.start();
+    document.removeEventListener("keydown", onKey);
+    window.setTimeout(function(){ modal.hidden = true; }, 480);
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  Array.prototype.forEach.call(triggers, function(t){
+    t.addEventListener("click", open);
+    t.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); open(); } });
+  });
+  Array.prototype.forEach.call(modal.querySelectorAll("[data-close]"), function(el){
+    el.addEventListener("click", close);
+  });
+
+  if(scene && card && !reduce){
+    scene.addEventListener("pointermove", function(e){
+      var r = scene.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - .5;
+      var py = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = "rotateX(" + (8 - py * 16).toFixed(2) + "deg) rotateY(" + (-17 + px * 24).toFixed(2) + "deg)";
+    });
+    scene.addEventListener("pointerleave", function(){ card.style.transform = ""; });
+  }
+})();
+</script>
 </body>
 </html>
