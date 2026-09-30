@@ -172,6 +172,10 @@
   .work .go { font-family: "Space Mono", monospace; font-size: .8rem; color: var(--accent); display: inline-flex; align-items: center; gap: .4rem; opacity: 0; transform: translateX(-8px); transition: opacity .35s, transform .35s; white-space: nowrap; }
   .work:hover .go { opacity: 1; transform: none; }
   @media (max-width: 720px){ .work { grid-template-columns: 2.6rem 1fr; } .work .go { display: none; } }
+  .work.case-link { text-decoration: none; color: inherit; cursor: pointer; }
+  .work.case-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 10px; }
+  .work .caselabel { font-family: "Space Mono", monospace; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .35rem; }
+  @media (max-width: 720px){ .work.case-link .go { display: inline-flex; grid-column: 2; margin-top: .6rem; opacity: 1; transform: none; } }
 
   /* ===================== TIMELINE ===================== */
   .timeline { border-top: 1px solid var(--line); }
@@ -325,8 +329,18 @@
         <p class="sub">Applied AI and full-stack engineering.</p>
       </div>
       <div class="works">
-        <div class="work reveal">
+        <a class="work reveal case-link" href="construction-submittal-ai.html">
           <span class="no">01</span>
+          <span>
+            <span class="caselabel">Case study · Techjays</span>
+            <h3>Construction Submittal Compliance AI</h3>
+            <p class="say">An enterprise document-intelligence platform that extracts requirements from project specifications, matches submitted products against them with LLM reasoning and vector search, and prepares compliance results for human review. <em>Production work.</em></p>
+            <span class="plaque"><span>FastAPI</span><span>· Gemini</span><span>· pgvector</span><span>· Google Cloud</span><span>· 2026</span></span>
+          </span>
+          <span class="go">Read case study →</span>
+        </a>
+        <div class="work reveal">
+          <span class="no">02</span>
           <span>
             <h3>TalentSynth - Resume Analyzer</h3>
             <p class="say">A resume analyzer that parses a CV, scores it against a job description on a strict rubric, and surfaces the reasoning - a secure Django app with Google OAuth and a live analytics dashboard.</p>
@@ -334,7 +348,7 @@
           </span>
         </div>
         <div class="work reveal">
-          <span class="no">02</span>
+          <span class="no">03</span>
           <span>
             <h3>Pneumonia Detection from Chest X-rays</h3>
             <p class="say">Deep learning that classifies chest X-rays in real time and generates Grad-CAM explanations for interpretability. <em>96% accuracy, 0.995 AUC</em> via a confidence-weighted ensemble of MobileNetV2 and EfficientNetB0.</p>
